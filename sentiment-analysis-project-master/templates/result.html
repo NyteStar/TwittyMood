@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+  </head>
+  <body>
+		<ul>
+			{% for i in range(0, len) %} 
+			<li>
+				<ul>
+					<li>username: {{ result[i].username }}</li>
+					<li>tweet: {{ result[i].tweet }}</li>
+					<li>link: {{ result[i].link }}</li>
+					<li>score: {{ result[i].score }}</li>
+					<li>label: {{ result[i].label }}</li>
+					<li>date: {{ result[i].date }}</li>
+					<li>processed_text: {{ result[i].processed_text }}</li>
+				</ul>
+			</li>
+			{% endfor %}
+		</ul>
+  </body>
+</html>
