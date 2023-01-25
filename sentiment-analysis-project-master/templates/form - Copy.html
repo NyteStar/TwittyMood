@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Form</title>
+    <style type="text/css">
+body {
+    background-image: url(https://drive.google.com/drive/u/0/folders/0B-iCAiYaK25ZeDZIb3diREhaRE0);
+    font-family: 'Cairo';font-size: 22px;
+    background-size: 1700px 800px;
+    background-color: #0984e3;
+    background-repeat: no-repeat;
+}
+
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"> <img alt="" class="d-inline-block align-top" height="30"
+                                           src="C:\Downloaded Web Sites\thememine.net\themeforest\anada\assets\img\favicon.png"
+                                           style="width: 30px;height: 20px;" width="30"> TM </a>
+    <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler" data-target="#navbarNavDropdown" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <!--
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li> -->
+        </ul>
+    </div>
+</nav>
+<!-- End Header -->
+
+<div class="container text-center">
+    <!--  <h1 style="color: #fff;font-size: 60px;font-weight: 900; margin-top: 5px">Twitter Sentiment Analysis</h1>
+		<div class="main-search-input">
+       <div class="main-search-input-item location">
+           <form action="/submit" method="POST">
+                <input type="text" name="text" placeholder="Enter the search key ..." />
+                <input type="text" name="limit" placeholder="Enter the number of tweets   ..." />
+               <input class="button" type="submit" value="Search" />
+            </form>
+       </div>
+    </div> -->
+    <h1 style="color: #fff;font-size: 80px;font-weight: 900; margin-top: 5px; padding:80px; color:#E8FFBE">Twitty
+        Mood</h1>
+    <form action="/submit" method="POST">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+                <input class="form-control" id="text" name="text" placeholder="Enter the search key " required="true"
+                       style="height:55px;" type="text">
+            </div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4">
+                <input class="form-control" name="limit" placeholder="Enter the number of tweets" required="true"
+                       style="height:55px;" type="text" value="60">
+            </div>
+        </div>
+        <input class="btn btn-block btn-light"
+               style="margin:auto; margin-top:25px; border:1px solid #0984e3; background-color:#81D63E; width:20%; font-size:30px; color:white; font-weight:bold;"
+               type="submit" value="Search"/>
+    </form>
+
+    <i aria-hidden="true" class="fa fa-twitter" style="font-size:200px;color:#FFF"></i>
+
+    <p style="color: #fff; "><strong>Sentiment analysis</strong> is the automated process of analyzing text data and
+        sorting it into sentiments positive, negative, or neutral. Using sentiment analysis tools to analyze opinions in
+        Twitter data can help companies understand how people are talking about their brand.</p>
+</div>
+<script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+

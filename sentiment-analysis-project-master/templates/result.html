@@ -1,24 +1,310 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title>Form</title>
+      <meta charset="utf-8">
+      <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
+      <title>Results</title>
+      <style type="text/css">
+body {
+  font-family: 'Cairo';font-size: 22px;
+   background-size: auto;
+   background-color: #EFEFEF;;
+   background-repeat: no-repeat;
+}
+
+ul {
+    width: 50%;
+    margin: auto;
+}
+
+
+
+      </style>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
-		<ul>
-			{% for i in range(0, len) %} 
-			<li>
-				<ul>
-					<li>username: {{ result[i].username }}</li>
-					<li>tweet: {{ result[i].tweet }}</li>
-					<li>link: {{ result[i].link }}</li>
-					<li>score: {{ result[i].score }}</li>
-					<li>label: {{ result[i].label }}</li>
-					<li>date: {{ result[i].date }}</li>
-					<li>processed_text: {{ result[i].processed_text }}</li>
-				</ul>
-			</li>
-			{% endfor %}
-		</ul>
+  <input id="neglen" type="hidden" value="{{neglen}}">
+  <input id="poslen" type="hidden" value="{{poslen}}">
+  <input id="neutlen" type="hidden" value="{{neutlen}}">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"> TM </a>
+      <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+              class="navbar-toggler" data-target="#navbarNavDropdown" data-toggle="collapse" type="button">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarNavDropdown">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="form"><strong>HOME</strong></a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  <!-- End Header -->
+
+  <div class="container text-center">
+
+      <h1 style="color: #fff;font-size: 60px;font-weight: 900; margin: 20px; color:black;">Twitty Mood</h1>
+  </div>
+
+  <div class="text-center">
+      <ul class="nav nav-tabs " id="myTab" role="tablist" style=" ">
+          <li class="nav-item" style="color:#fff">
+              <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home"
+                 id="home-tab" role="tab" style="color:#FA5956;">Negative {{neglen}}</a>
+          </li>
+          <li class="nav-item" style="color:#fff">
+              <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#profile"
+                 id="profile-tab" role="tab" style="color:#3FE558;">Positive {{poslen}}</a>
+          </li>
+          <li class="nav-item" style="color:#fff">
+              <a aria-controls="contact" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact"
+                 id="contact-tab" role="tab">Neutral {{neutlen}}</a>
+          </li>
+          <li class="nav-item">
+              <a aria-controls="summary" aria-selected="false" class="nav-link" data-toggle="tab" href="#summary"
+                 id="summary-tab" role="tab">Summary</a>
+          </li>
+      </ul>
+  </div>
+
+  <div class="tab-content" id="myTabContent">
+      <!-- negatives -->
+      <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+          <div class="container" style="width:80%;">
+              <div class="row">
+                  {% for i in range(0, neglen) %}
+                  <div class="card-deck col-lg-4">
+                      <div class="card">
+                          <div class="card-body">
+                              <h5 class="card-title btn-danger text-center" style="padding:3px; border-radius:4px;"> {{
+                                  negatives[i].label }} </h5>
+                              <strong class="text-primary">Username : </strong> {{ negatives[i].username }}
+                              <p class="card-text"><strong>Tweet :</strong> {{ negatives[i].tweet }}</p>
+                              <div class="card-footer">
+                                  <p class="card-text"><small class="text-muted">{{ negatives[i].date }}</small>
+                                      <a class="btn btn-sm btn-primary" href="{{ negatives[i].link }}" target="_blank">Go
+                                          see it</a>
+                              </div>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+
+
+      <!-- postives  -->
+      <div aria-labelledby="profile-tab" class="tab-pane fade" id="profile" role="tabpanel">
+
+          <div class="container">
+              <div class="row">
+
+
+                  {% for i in range(0, poslen) %}
+                  <div class="card-deck col-lg-4">
+                      <div class="card  ">
+                          <div class="card-body">
+                              <h5 class="card-title btn-success text-center" style="padding:3px;"> {{ postives[i].label
+                                  }} </h5>
+                              <strong class="text-primary">Username : </strong> {{ postives[i].username }}
+                              <p class="card-text"><strong>Tweet:</strong> {{ postives[i].tweet }}</p>
+
+                              <div class="card-footer">
+                                  <p class="card-text"><small class="text-muted">{{ postives[i].date }}</small>
+                                      <a class="btn btn-sm btn-primary" href="{{ postives[i].link }}" target="_blank">Go
+                                          see it</a>
+                              </div>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+
+          </div>
+
+      </div>
+      <!-- neutral  -->
+      <div aria-labelledby="contact-tab" class="tab-pane fade" id="contact" role="tabpanel">
+
+          <div class="container">
+              <div class="row">
+
+
+                  {% for i in range(0, neutlen) %}
+                  <div class="card-deck col-lg-4">
+                      <div class="card  ">
+                          <div class="card-body">
+                              <h5 class="card-title btn-info text-center" style="padding:3px;"> {{ neutrals[i].label
+                                  }} </h5>
+                              <strong class="text-primary">Username : </strong> {{ neutrals[i].username }}
+                              <p class="card-text"><strong>Tweet:</strong> {{ neutrals[i].tweet }}</p>
+
+                              <div class="card-footer">
+                                  <p class="card-text"><small class="text-muted">{{ neutrals[i].date }}</small>
+                                      <a class="btn btn-sm btn-primary" href="{{ neutrals[i].link }}" target="_blank">Go
+                                          see it</a>
+                              </div>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+
+          </div>
+
+      </div>
+      <div aria-labelledby="summary-tab" class="tab-pane fade  " id="summary" role="tabpanel">
+          <div style="height: 400px;width: 400px;background-color:#EFEFEF ;margin:auto; margin-top:30px;">
+              <canvas height="300" id="myChart" width="300"></canvas>
+          </div>
+
+          <br><br>
+          <div style="height: 400px;width: 400px;background-color:#EFEFEF; margin:auto;">
+              <canvas height="300" id="myChart2" width="300"></canvas>
+          </div>
+
+      </div>
+  </div>
+
+
+  <!-- negatives -->
+
+
+  <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+          src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+          src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+ var poslen = $("#poslen").val();
+ var neglen = $("#neglen").val();
+ var neutlen = $("#neutlen").val();
+var Jdata = [];
+Jdata.push(neglen);
+Jdata.push(poslen);
+Jdata.push(neutlen);
+console.log(Jdata);
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Negative', 'Positive', 'Neutral' ],
+        datasets: [{
+            label: '# of Votes',
+            data: Jdata,
+            backgroundColor: [
+                'rgba(255, 0, 0, 0.8)',
+                'rgba(0, 255, 0, 0.8)',
+                'rgba(0, 0, 255, 0.3)',
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: myoption
+});
+
+var myoption = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+				tooltips: {
+					enabled: true
+				},
+				hover: {
+					animationDuration: 1
+				},
+				animation: {
+				duration: 1,
+				onComplete: function () {
+					var chartInstance = this.chart,
+						ctx = chartInstance.ctx;
+						ctx.textAlign = 'center';
+						ctx.fillStyle = "rgba(0, 0, 0, 1)";
+						ctx.textBaseline = 'bottom';
+						this.data.datasets.forEach(function (dataset, i) {
+							var meta = chartInstance.controller.getDatasetMeta(i);
+							meta.data.forEach(function (bar, index) {
+								var data = dataset.data[index];
+								ctx.fillText(data, bar._model.x, bar._model.y + 2);
+						});
+					});
+				}
+		}
+};
+
+var ctx = document.getElementById('myChart2').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Negative', 'Positive', 'Neutral' ],
+        datasets: [{
+            label: '# of Votes',
+            data:Jdata,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+
+            ],
+
+           backgroundColor: [
+                'rgba(255, 0, 0, 0.8)',
+                'rgba(0, 255, 0, 0.8)',
+                'rgba(0, 0, 255, 0.3)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: myoption
+});
+
+
+  </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
