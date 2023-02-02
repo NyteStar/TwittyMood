@@ -1,1 +1,3 @@
-# sentiment-analysis-project
+  This project titled “Twitty Mood” is a web application which is used to analyze the tweets. It performs sentiment analysis on tweets and determine if it is positive, negative or neutral. This web application can be used by any organization to review their works, political leaders to review people opinions about their plans or any other company to review their brands and products.
+
+  The main feature of this web application is that it helps determine the general opinion on products, government work, politics or any other by analyzing the tweets. This system is capable of training the new tweets taking reference to previously trained tweets. The analyzed data will be represented as Pie-chart and Bar-graph with ability to review tweets.
