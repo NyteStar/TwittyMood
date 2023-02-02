@@ -1,7 +1,7 @@
-from flask import Flask, request, jsonify, abort, render_template
+from flask import Flask, request, render_template
 from cerberus import Validator
 
-from model.model import predictOnInput
+from model import predictOnInput
 
 app = Flask(__name__)
 
